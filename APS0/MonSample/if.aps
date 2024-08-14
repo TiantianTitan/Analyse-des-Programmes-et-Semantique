@@ -1,0 +1,3 @@
+[
+    ECHO (if false 41 42)
+]

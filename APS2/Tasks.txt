@@ -1,0 +1,26 @@
+不需要改的函数：
+	sem_InZ，也就是int_of_value
+	get_value，也就是getInEnv
+	getInMem
+	newAddress
+	AllocMemroy
+	allocBlock
+	replaceElem
+	editInMem
+	sem_prog，也就是eval_prog
+	sem_block，也就是eval_block
+	sem_cmds，也就是eval_cmd
+	sem_args，也就是eval_args以及get_id_arg
+	sem_def，也就是eval_def
+	sem_lval，也就是eval_lvalue
+	sem_exprp，也就是eval_sexprp
+
+可能存在问题的部分
+	ASTCall
+	sem_arsp
+	sem_argsp
+	sem_exprsp
+	
+	sem_exprs要做出对应的修改
+	sem_expr部分的App，Bra以及nth和operator等
+

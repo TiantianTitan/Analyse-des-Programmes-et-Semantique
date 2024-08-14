@@ -1,0 +1,57 @@
+例子：
+	prog([ const(a, int, 5),  echo(a)]).
+
+
+第一步
+	规则：
+		progType(prog(Cs), void) :- cmdsType([], Cs, void).
+	参数：
+		Cs = [const(a, int, 5), echo(a)]
+		[ ] 意思是空的上下文环境（Env）
+第二步
+	规则：
+		cmdsType(Ctx, [Def|Cs], void) :- defType(Ctx, Def, CtxRes), cmdsType(CtxRes, Cs, void).
+	参数：
+		Ctx = []（初始上下文为空）
+		Def = const(a, int, 5)（第一个命令）
+		Cs = [echo(a)]（剩余命令）
+	含义：
+		这条规则检查命令列表中的第一个命令 Def，然后递归地检查剩余的命令 Cs。
+	作用：
+		开始处理命令列表，首先处理 const(a, int, 5)。
+第三步
+	规则：
+		defType(Ctx, const(X,T,E), [(X,T)|Ctx]) :- exprType(Ctx,E,T).
+	参数：
+		Ctx = []（当前上下文）
+		X = a，T = int，E = 5（定义的变量名、类型和值）
+	含义：
+		检查常量定义。确保表达式 E（这里是 5）的类型与声明的类型 T（这里是 int）匹配。
+	作用：
+		验证常量 a 的定义是否符合类型 int。
+	结果：
+		exprType([], 5, int) 成立，因为 5 是一个整数。Ctx更新为 [(a, int)]。
+第四步
+	规则：
+		cmdsType(Ctx, [Def|Cs], void) :- defType(Ctx, Def, CtxRes), cmdsType(CtxRes, Cs, void).
+	参数：
+		Ctx = [(a, int)]
+		Cs = [echo(a)]（剩余命令）
+	含义：
+		继续之前的递归调用，现在使用更新后的上下文。
+	作用：
+		理剩余的命令，这里是 echo(a)。
+第五步
+	规则：
+		statType(Ctx, echo(E), void) :- exprType(Ctx, E, int).
+	参数：
+		Ctx = [(a, int)]
+		E = a
+	含义：
+		检查 echo 语句。确保 E（这里是 a）的类型是 int。
+	作用：
+		验证 echo(a) 语句中 a 的类型。
+	结果：
+		exprType([(a, int)], a, int) 成立，因为在上下文中 a 被定义为 int。
+第六步
+	全部成立，输出ok

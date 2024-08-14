@@ -1,0 +1,16 @@
+[
+  CONST xs (vec int) (alloc 5);
+  VAR i int;
+  SET i 0;
+  WHILE (lt i (len xs))
+    [
+      SET (nth xs i) (add i 1);
+      SET i (add i 1)
+    ];
+  ECHO (nth xs 0); 
+  ECHO (nth xs 1); 
+  ECHO (nth xs 2); 
+  ECHO (nth xs 3); 
+  ECHO (nth xs 4) 
+    
+]

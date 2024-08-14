@@ -1,0 +1,7 @@
+[
+  PROC printBool [b:bool]
+    [
+      ECHO 42
+    ];
+  CALL printBool true
+]

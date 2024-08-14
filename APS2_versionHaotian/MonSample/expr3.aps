@@ -1,0 +1,4 @@
+[
+    CONST f (int->int) [x:int] (if (lt 0 x) x 0);
+    ECHO (f 42)
+]

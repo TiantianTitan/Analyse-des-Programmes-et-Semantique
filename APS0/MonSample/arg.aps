@@ -1,0 +1,4 @@
+[
+  FUN f int [x:int] (add x 12);
+  ECHO (f 30)
+]

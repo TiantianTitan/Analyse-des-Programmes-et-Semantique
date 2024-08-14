@@ -1,0 +1,4 @@
+[
+  FUN f int [x:int] (mul x 21);
+  ECHO (f 2)
+]

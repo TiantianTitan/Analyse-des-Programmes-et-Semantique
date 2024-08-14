@@ -1,0 +1,7 @@
+[
+  CONST ab (vec int) (alloc 2);  
+  CONST xs (vec (vec int)) (alloc 3);
+  SET (nth ab 0) 42;
+  SET (nth xs 0) ab;
+  ECHO (nth (nth xs 0) 0) 
+]
